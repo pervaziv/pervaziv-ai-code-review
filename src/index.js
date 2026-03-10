@@ -14,11 +14,11 @@ async function run() {
     let branch;
 
     if (context.eventName === 'push') {
-      triggerType = 'push_to_main';
+      triggerType = 'push';
       branch = context.ref.replace('refs/heads/', '');
     } else if (context.eventName === 'schedule') {
       triggerType = 'scheduled_scan';
-      branch = 'main';
+      branch = context.repo.default_branch;
     } else {
       console.log('Event not handled. Skipping.');
       return;
