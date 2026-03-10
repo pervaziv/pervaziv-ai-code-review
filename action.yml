@@ -1,5 +1,9 @@
 name: Pervaziv AI Code Review
-description: Security scanning that automatically analyzes your repository, displays vulnerabilities in the GitHub Security tab as code scanning alerts, and shows a detailed summary in the Actions tab with a link to the Pervaziv AI console.
+description: AI Code review with full repo security results in GitHub Actions & Security tabs, and detailed report in Pervaziv AI console
+branding:
+  icon: 'shield'
+  color: 'black'
+author: 'Pervaziv AI'
 inputs:
   backend-url:
     description: Pervaziv AI backend URL
