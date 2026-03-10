@@ -1,0 +1,15 @@
+name: Pervaziv AI Code Review
+description: Security scanning that automatically analyzes your repository, displays vulnerabilities in the GitHub Security tab as code scanning alerts, and shows a detailed summary in the Actions tab with a link to the Pervaziv AI console.
+inputs:
+  backend-url:
+    description: Pervaziv AI backend URL
+    required: false
+    default: 'https://console.pervaziv.com:8443/handleGitAction'
+  console-url:
+    description: Pervaziv AI console URL
+    required: false
+    default: 'https://console.pervaziv.com'
+
+runs:
+  using: node20
+  main: dist/index.js
