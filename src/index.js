@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const zlib = require('zlib');
+const { createFixPr } = require('./createFixPr'); 
 
 async function run() {
   try {
@@ -85,6 +86,22 @@ async function run() {
         result.security_report_url || 'https://console.pervaziv.com'
       )
       .write();
+
+      // AUTO FIX PR
+    if (result.suggestion && result.suggestion.length > 0) {
+      console.log(`Fix PR enabled — found ${result.suggestion.length} suggested fixes`);
+
+      const pr = await createFixPr(octokit, context, branch, result);  
+
+      // add fix PR link to summary
+      await core.summary
+        .addHeading('Auto Fix PR Created', 2)
+        .addLink(
+          `View Fix PR from Pervaziv AI — ${result.suggestion.length} ${result.suggestion.length === 1 ? 'vulnerability' : 'vulnerabilities'} fixed →`,
+          pr.data.html_url
+        )
+        .write();
+    }
 
   } catch (error) {
     await core.summary
