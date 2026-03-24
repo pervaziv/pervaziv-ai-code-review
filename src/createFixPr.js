@@ -191,7 +191,7 @@ async function createFixPr(octokit, context, branch, result) {
       return `| \`${s.file_path}\` | ${lines} |`;
     }),
     "",
-    `[View Full Report on Pervaziv Console](${result.security_report_url || 'https://console.pervaziv.com'})`
+    `[View Full Report on Pervaziv AI Console](${result.security_report_url || 'https://console.pervaziv.com'})`
   ].join("\n");
 
   const pr = await octokit.rest.pulls.create({
