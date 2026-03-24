@@ -60577,7 +60577,7 @@ async function run() {
       branch = context.ref.replace('refs/heads/', '');
     } else if (context.eventName === 'schedule') {
       triggerType = 'scheduled_scan';
-      branch = context.repo.default_branch;
+      branch = context.ref.replace('refs/heads/', '');
     } else {
       console.log('Event not handled. Skipping.');
       return;
